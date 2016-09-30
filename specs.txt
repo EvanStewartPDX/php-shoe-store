@@ -1,17 +1,21 @@
-1. Test ability to add a store via form
-Input: Payless;
-Output: Payless;
 
-2. Test ability to add a Brand
-Input: keds;
-Output: keds;
 
-3. Test getAll on brands
+1. Test getAll on brands
 Input: keds, red wing
 Ouput: keds, red wing
 
-4. Test save
+2. Test save
 Input: keds, null;
 Output: keds, null;
 
-5.
+3. test find 2
+Input keds, 1; payless 2,
+output: payless;
+
+4. Test ability to add a store via dropdown
+Input: Add Payless;
+Output: Payless;
+
+5. Test ability to add a Brand to brand
+Input: add keds;
+Output: keds;

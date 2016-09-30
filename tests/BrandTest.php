@@ -18,7 +18,7 @@
       protected function tearDown()
         {
           Brand::deleteAll();
-
+          Store::deleteAll();
         }
         function test_getName()
         {
@@ -108,7 +108,7 @@
 
             $id1 = null;
             $name1 = "Payless";
-            $test_store = new Store($name, $id);
+            $test_store = new Store($name1, $id1);
             $test_store->save();
 
             $test_Brand->addStore($test_store);
@@ -116,22 +116,7 @@
             $this->assertEquals([$test_store], $result);
 
         }
-        function test_getStores()
-        {
-            $id = null;
-            $name = "Keds";
-            $test_Brand = new Brand($name, $id);
-            $test_Brand->save();
-
-            $id = null;
-            $store_name = "payless";
-            $test_store = new Store($name, $id);
-            $test_store->save();
-
-            $result = $test_Brand->getStores();
-
-            $this->assertEquals($test_store, $result);
-        }
+        
 
     }
 
