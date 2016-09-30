@@ -7,13 +7,14 @@
         <h1>{{ store.getName }}</h1>
 
         {% if brands is not empty %}
-            <p>Here are the brands for this Brand:</p>
-
-                {% for brand in brands %}
-                    <h3> {{ store.getName }} </h3>
-                {% endfor %}
-
+            <h3>Here are the brands for this Store:</h3>
+                <ul>
+                    {% for brand in brands %}
+                        <li><h4> {{ brand.getName }} </h4></li>
+                    {% endfor %}
+                </ul>
         {% endif %}
+        <br />
 
         <h4>Add a brand to this store:</h4>
 

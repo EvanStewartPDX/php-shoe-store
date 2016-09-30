@@ -8,10 +8,9 @@
             {% if stores is not empty %}
                 {% for store in stores %}
                     <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a></h4>
-                        {% else %}
-                            <h3>No stores currently Available</h3>
                 {% endfor %}
             {% endif %}
+            <br />
 
             <form action'/stores' method='post'>
                 <label for='storename'>Store Name</label>

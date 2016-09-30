@@ -6,4 +6,10 @@
 
 h1 {
     font-family: 'Source Code Pro', monospace;
+    text-decoration: underline;
+}
+
+h3 {
+
+    font-family: inherit;
 }
