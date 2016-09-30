@@ -3,9 +3,9 @@
     {
 
         private $name;
-        private $id = null;
+        private $id;
 
-        function __construct($name, $id)
+        function __construct($name, $id = null)
         {
             $this->name = $name;
             $this->id = $id;
@@ -81,6 +81,11 @@
         function update($new_name)
         {
             $GLOBALS['DB']->exec("UPDATE store SET name ='{$new_name}' WHERE id={$this->getId()};");
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM store WHERE id={$this->getId()}");
         }
     }
  ?>

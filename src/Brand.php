@@ -83,5 +83,10 @@
             $GLOBALS['DB']->exec("UPDATE brand SET name ='{$new_name}' WHERE id={$this->getId()};");
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM brand WHERE id={$this->getId()}");
+        }
+
     }
  ?>
