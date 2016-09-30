@@ -1,0 +1,9 @@
+1. Test ability to add a store via form
+Input: Payless;
+Output: Payless;
+
+2. Test ability to add a Brand
+Input: keds;
+Output: keds;
+
+3. User has
