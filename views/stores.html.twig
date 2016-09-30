@@ -3,19 +3,26 @@
     <title>Shoe Store</title>
 </head>
 <body>
-    <h1>Available Stores</h1>
-        {% if stores is not empty %}
-            {% for store in stores %}
-                <h4><a href="/store/{ store.getId }">{{ store.getName }}</a></h4>
-                    {% else %}
-                        <h3>No stores currently Available</h3>
-            {% endfor %}
-        {% endif %}
+    <div id ="wrapper">
+        <h1>Available Stores</h1>
+            {% if stores is not empty %}
+                {% for store in stores %}
+                    <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a></h4>
+                        {% else %}
+                            <h3>No stores currently Available</h3>
+                {% endfor %}
+            {% endif %}
 
-        <form action'/stores' method='post'>
-            <label for='storename'>Store Name</label>
-            <input id='storename' name='storename' type='text'>
+            <form action'/stores' method='post'>
+                <label for='storename'>Store Name</label>
+                <input id='storename' name='storename' type='text'>
 
-            <button type='submit'>Add Store</button>
+                <button type='submit' class="btn btn-default">Add Store</button>
+            </form>
+
+                <button type="button" class="btn btn-default"><a href='/brands'>See All Brands</a></button>
+                <br>
+                <button type="button" class="btn btn-home"><a href='/'>Home</a></button>
+    </div>
 </body>
 </html>

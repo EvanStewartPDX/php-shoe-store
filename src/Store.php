@@ -66,7 +66,7 @@
         }
         function getBrand()
         {
-            $returned_brands = $GLOBALS['DB']->query("SELECT brand.* FROM store JOIN brand_store ON ( store.id = brand_store.store_id) JOIN brand ON (brand.id = brand_store.brand_id) WHERE brand.id={$this->getId()};");
+            $returned_brands = $GLOBALS['DB']->query("SELECT brand.* FROM store JOIN brand_store ON ( store.id = brand_store.store_id) JOIN brand ON (brand.id = brand_store.brand_id) WHERE store.id={$this->getId()};");
 
             $brands = array();
             foreach($returned_brands as $brand){
@@ -76,6 +76,25 @@
                 array_push($brands, $new_brand);
             }
             return $brands;
+        }
+
+        function notBrand()
+        {
+            $allbrands = Brand::getAll();
+            $assignedbrands = $this->getBrand();
+
+            $nonBrands = array();
+            foreach($allbrands as $brand){
+                if(!in_array($brand, $assignedbrands))
+                {
+                    $name = $brand->getName();
+                    $id = $brand->getId();
+                    $new_brand = new Brand($name, $id);
+                    array_push($nonBrands, $new_brand);
+                }
+            }
+            return $nonBrands;
+
         }
 
         function update($new_name)

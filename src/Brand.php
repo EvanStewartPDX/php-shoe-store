@@ -78,6 +78,25 @@
             return $stores;
         }
 
+        function notStore()
+        {
+            $allstores = Store::getAll();
+            $addedstores = $this->getStore();
+
+            $nonStores = array();
+            foreach($allstores as $store){
+                if(!in_array($store, $addedstores)){
+                    $name = $store->getName();
+                    $id = $store->getId();
+                    $new_store = new Store($name, $id);
+                    array_push($nonStores, $new_store);
+
+                }
+            }
+            return $nonStores;
+
+        }
+
         function update($new_name)
         {
             $GLOBALS['DB']->exec("UPDATE brand SET name ='{$new_name}' WHERE id={$this->getId()};");
