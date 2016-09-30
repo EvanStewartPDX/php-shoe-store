@@ -77,5 +77,10 @@
             }
             return $brands;
         }
+
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE store SET name ='{$new_name}' WHERE id={$this->getId()};");
+        }
     }
  ?>
