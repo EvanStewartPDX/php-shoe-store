@@ -88,6 +88,27 @@
 
         }
 
+        function test_addBrand()
+        {
+            $id = null;
+            $name = "Keds";
+            $test_Brand = new Brand($name, $id);
+            $test_Brand->save();
+
+            $id1 = null;
+            $name1 = "Payless";
+            $test_store = new Store($name1, $id1);
+            $test_store->save();
+
+            $test_store->addBrand($test_Brand);
+            // var_dump($test_store);
+            $result = $test_store->getBrand();
+
+            $this->assertEquals([$test_Brand], $result);
+
+        }
+
+
 
     }
 ?>

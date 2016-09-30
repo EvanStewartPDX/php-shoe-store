@@ -57,9 +57,25 @@
                 }
             }
             return $found_store;
-
-
         }
 
+        function addBrand($brand)
+        {
+
+            $GLOBALS['DB']->exec("INSERT INTO brand_store (brand_id, store_id) VALUES ({$brand->getId()}, {$this->getId()});");
+        }
+        function getBrand()
+        {
+            $returned_brands = $GLOBALS['DB']->query("SELECT brand.* FROM store JOIN brand_store ON ( store.id = brand_store.store_id) JOIN brand ON (brand.id = brand_store.brand_id) WHERE brand.id={$this->getId()};");
+
+            $brands = array();
+            foreach($returned_brands as $brand){
+                $name = $brand['name'];
+                $id = $brand['id'];
+                $new_brand = new Brand($name, $id);
+                array_push($brands, $new_brand);
+            }
+            return $brands;
+        }
     }
  ?>
