@@ -6,4 +6,12 @@ Output: Payless;
 Input: keds;
 Output: keds;
 
-3. User has
+3. Test getAll on brands
+Input: keds, red wing
+Ouput: keds, red wing
+
+4. Test save
+Input: keds, null;
+Output: keds, null;
+
+5.
