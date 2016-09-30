@@ -6,9 +6,11 @@
     <div id ="wrapper">
         <h1>Available Brands</h1>
             {% if brands is not empty %}
-                {% for brand in brands %}
-                    <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></h4>
-                {% endfor %}
+                <ul>
+                    {% for brand in brands %}
+                        <li><h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></h4></li>
+                    {% endfor %}
+                </ul>
             {% endif %}
             <br />
 

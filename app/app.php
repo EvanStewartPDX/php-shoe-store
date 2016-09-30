@@ -9,9 +9,12 @@
 
     $app = new Silex\Application();
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
     $app['debug'] = true;
 
-    $server = 'mysql:host=localhost;dbname=shoe_store';
+    $server = 'mysql:host=localhost:8889;dbname=shoe_store';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -66,6 +69,25 @@
 
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $brand->getStore(), 'stores2' => $brand->notStore(), 'all_stores' => Store::getAll()));
     });
+
+    $app->patch("/{id}/edit", function($id) use ($app) {
+       $store= Store::find($id);
+       $store->update($_POST['name']);
+
+       return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'store' => $store, 'brands' => $store->getBrand(), 'brands2' => $store->notBrand(), 'all_brands' => Brand::getAll()));
+   });
+   $app->delete("/delete/{id}", function($id) use ($app) {
+       $store = Store::find($id);
+       $store->delete();
+
+       return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'store' => $store, 'brands' => $store->getBrand(), 'brands2' => $store->notBrand(), 'all_brands' => Brand::getAll()));
+   });
+   $app->post("/delete/{id}", function($id) use ($app) {
+       $new_store = new Store($_POST['storename']);
+       $new_store->save();
+
+       return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
+   });
 
 
     return $app;

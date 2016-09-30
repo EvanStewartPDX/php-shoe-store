@@ -6,9 +6,27 @@
     <div id ="wrapper">
         <h1>Available Stores</h1>
             {% if stores is not empty %}
-                {% for store in stores %}
-                    <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a></h4>
-                {% endfor %}
+                <ul>
+                    {% for store in stores %}
+                        <li><h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a></h4></li>
+
+
+
+                        <form class="edit" action="/{{store.id}}/edit" method="post">
+                            <input name="store" type="hidden" value="{{store.id}}">
+                            <input name="_method" type="hidden" value="patch">
+                            <input class="form" type="hidden" name="store_id" value={{store.id}}>
+                            <div><label for="">Edit Stylist Name</label>
+                            <input class="form" type="text" name="name" value=""></br>
+                            <button class="form btn btn-success" type="submit" name="button">Submit Edit</button>
+                        </form>
+                        <form class="delete" action="/delete/{{store.id}}" method="post">
+                            <input name="_method" type="hidden" value="delete">
+                            <button class="btn btn-danger delete" type="submit" name="button">Delete </button>
+                        </form>
+
+                    {% endfor %}
+                </ul>
             {% endif %}
             <br />
 
