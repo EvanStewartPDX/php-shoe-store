@@ -25,12 +25,12 @@
         }
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO store (name) VALUES ('{$this->getName()}');");
+            $GLOBALS['DB']->exec("INSERT INTO stores (name) VALUES ('{$this->getName()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
         static function getAll()
         {
-            $returned_stores = $GLOBALS['DB']->query("SELECT * FROM store;");
+            $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
             $stores = array();
             foreach($returned_stores as $store){
                 $name = $store['name'];
@@ -42,8 +42,8 @@
         }
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM store;");
-            $GLOBALS['DB']->exec("DELETE FROM brand_store;");
+            $GLOBALS['DB']->exec("DELETE FROM stores;");
+            $GLOBALS['DB']->exec("DELETE FROM brands_stores;");
         }
 
         static function find($search_id)
@@ -62,11 +62,11 @@
         function addBrand($brand)
         {
 
-            $GLOBALS['DB']->exec("INSERT INTO brand_store (brand_id, store_id) VALUES ({$brand->getId()}, {$this->getId()});");
+            $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$brand->getId()}, {$this->getId()});");
         }
         function getBrand()
         {
-            $returned_brands = $GLOBALS['DB']->query("SELECT brand.* FROM store JOIN brand_store ON ( store.id = brand_store.store_id) JOIN brand ON (brand.id = brand_store.brand_id) WHERE store.id={$this->getId()};");
+            $returned_brands = $GLOBALS['DB']->query("SELECT brands.* FROM stores JOIN brands_stores ON ( stores.id = brands_stores.store_id) JOIN brands ON (brands.id = brands_stores.brand_id) WHERE stores.id={$this->getId()};");
 
             $brands = array();
             foreach($returned_brands as $brand){
@@ -99,12 +99,12 @@
 
         function update($new_name)
         {
-            $GLOBALS['DB']->exec("UPDATE store SET name ='{$new_name}' WHERE id={$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE stores SET name ='{$new_name}' WHERE id={$this->getId()};");
         }
 
         function delete()
         {
-            $GLOBALS['DB']->exec("DELETE FROM store WHERE id={$this->getId()}");
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id={$this->getId()}");
         }
     }
  ?>

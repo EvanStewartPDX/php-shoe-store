@@ -6,10 +6,27 @@
 
 h1 {
     font-family: 'Source Code Pro', monospace;
-    text-decoration: underline;
+    text-align: center;
 }
 
 h3 {
 
-    font-family: inherit;
+    text-decoration-color: black;
+}
+
+.col-md-6 {
+    text-align: center;
+}
+
+a {
+     black;
+    text-decoration: underline;
+}
+
+.jumbotron {
+    background-color: skyblue;
+}
+
+.container {
+    margin: auto;
 }

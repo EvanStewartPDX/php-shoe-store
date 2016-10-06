@@ -3,34 +3,39 @@
     <title>Shoe Network</title>
 </head>
 <body>
-    <div id ="wrapper">
-        <h1>{{ store.getName }}</h1>
+    <div class ="container">
+        <div class = "jumbotron">
+            <h1>{{ store.getName }}</h1>
+        </div>
+        <div class = "well">
+            <h4>Add a brand to this store:</h4>
 
+            <form action='/store/{{ store.getId }}' method='post'>
+                <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
+                <label for="brand_id">Select a brand</label>
+                <select id='brand_id' name='brand_id' type='text'>
+                    {% if brands2 is not empty %}
+                      {% for brand in brands2 %}
+                        <option value="{{ brand.getId }}"> {{ brand.getName }} </option>
+                      {% endfor %}
+                    {% endif %}
+
+                </select>
+                <button type='submit' class="btn btn-default">Add Brand</button>
+            </form>
+        </div>
         {% if brands is not empty %}
-            <h3>Here are the brands for this Store:</h3>
-                <ul>
-                    {% for brand in brands %}
-                        <li><h4> {{ brand.getName }} </h4></li>
-                    {% endfor %}
-                </ul>
+            <div class = "well">
+                <h3>Here are the brands for this Store:</h3>
+                    <ul>
+                        {% for brand in brands %}
+                            <li><h4> {{ brand.getName }} </h4></li>
+                        {% endfor %}
+                    </ul>
+            </div>
         {% endif %}
         <br />
 
-        <h4>Add a brand to this store:</h4>
-
-        <form action='/store/{{ store.getId }}' method='post'>
-            <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
-            <label for="brand_id">Select a brand</label>
-            <select id='brand_id' name='brand_id' type='text'>
-                {% if brands2 is not empty %}
-                  {% for brand in brands2 %}
-                    <option value="{{ brand.getId }}"> {{ brand.getName }} </option>
-                  {% endfor %}
-                {% endif %}
-
-            </select>
-            <button type='submit' class="btn btn-default">Add Brand</button>
-        </form>
 
         <button type="button" class="btn btn-default"><a href='/stores'>See All Brands</a></button>
         <br>
