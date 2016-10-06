@@ -5,8 +5,9 @@
 }
 
 h1 {
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Indie Flower', cursive;
     text-align: center;
+    font-size: 200%;
 }
 
 h3 {
@@ -29,4 +30,11 @@ a {
 
 .container {
     margin: auto;
+}
+
+
+body{
+    background: url('/img/shoes.jpg') center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
