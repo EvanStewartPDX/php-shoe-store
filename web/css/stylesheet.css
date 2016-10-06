@@ -1,8 +1,3 @@
-#wrapper {
-  width: 700px ;
-  margin-left: auto ;
-  margin-right: auto ;
-}
 
 h1 {
     font-family: 'Indie Flower', cursive;
@@ -25,7 +20,7 @@ a {
 }
 
 .jumbotron {
-    background-color: skyblue;
+    background-color: lightblue;
 }
 
 .container {
